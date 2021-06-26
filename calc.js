@@ -39,7 +39,7 @@ let operator;
 
 let numberBtns = [...document.querySelectorAll(".number-btn")];
 let operatorBtns = [...document.querySelectorAll(".operator")];
-let subOptBtns = [...document.querySelectorAll(".delete-opts>button")];
+let delOptBtns = [...document.querySelectorAll(".delete-opts>button")];
 let outputPrev = document.querySelector(".sub-output:nth-child(1)");
 let outputCurrent = document.querySelector(".sub-output:nth-child(2)");
 let answerBtn = document.querySelector(".equal-to-btn");
@@ -70,4 +70,16 @@ answerBtn.addEventListener("click", () => {
   result = calculator(operator, num1, num2);
   outputCurrent.innerText = result;
   outputPrev.innerText = "";
+});
+
+delOptBtns[0].addEventListener("click", () => {
+  outputPrev.innerText = "";
+  outputCurrent.innerText = "";
+});
+
+delOptBtns[1].addEventListener("click", () => {
+  outputCurrent.innerText = outputCurrent.innerText.slice(0, this.length - 1);
+  if (outputCurrent.innerText === "") {
+    outputPrev.innerText = outputPrev.innerText.slice(0, this.length - 1);
+  }
 });
